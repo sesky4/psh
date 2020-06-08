@@ -4,7 +4,7 @@
  - [x] auto-fill password
  - [x] glob connection name match
  - [ ] other ssh options
- - [ ] scp support
+ - [x] scp support
 
 ## How to use
 
