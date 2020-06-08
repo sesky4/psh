@@ -14,7 +14,7 @@
 
 3.make pscp && make install_pscp
 
-4.(first time) `COMP_INSTALL=yes psh` to install bash/zsh auto_completion
+4.(first time) `psh -complete && pscp -complete` to install bash/zsh auto_completion
 
 5.Use it!
 ```

@@ -11,6 +11,7 @@ import (
 
 func main() {
 	c := psh.LoadConfig()
+	ifAutoComplete(c)
 	args := make([]string, len(os.Args))
 	copy(args, os.Args)
 
@@ -66,7 +67,7 @@ func ifAutoComplete(c psh.Conf) {
 		Flags: complete.Flags{},
 	}
 	for k, _ := range c.Named {
-		cmd.Flags[k] = complete.PredictAnything
+		cmd.Flags[k+":"] = complete.PredictAnything
 	}
 	cmp := complete.New(
 		"pscp",
