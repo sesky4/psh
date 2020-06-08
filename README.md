@@ -20,6 +20,6 @@
 ```
 psh server1
 
-scp server1:/root/my_file.py .
-scp ./my_file.py server1:/root/
+pscp server1:/root/my_file.py .
+pscp ./my_file.py server1:/root/
 ```
