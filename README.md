@@ -10,6 +10,16 @@
 
 1.write your own pconfig file in ~/.ssh/pconfig(example ./pconfig in repo)
 
-2.copy "psh" executable to $PATH
+2.make psh && make install_psh
 
-3.(first time) `COMP_INSTALL=yes psh` to install bash/zsh auto_completion
+3.make pscp && make install_pscp
+
+4.(first time) `COMP_INSTALL=yes psh` to install bash/zsh auto_completion
+
+5.Use it!
+```
+psh server1
+
+scp server1:/root/my_file.py .
+scp ./my_file.py server1:/root/
+```
