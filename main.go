@@ -3,6 +3,7 @@ package main
 import (
 	"log"
 	"os"
+	"psh/conf"
 )
 
 func poe(err error) {
@@ -12,7 +13,7 @@ func poe(err error) {
 }
 
 func main() {
-	c := LoadConfig()
+	c := conf.LoadConfig()
 	ifAutoComplete(c)
 	host := os.Args[1]
 
