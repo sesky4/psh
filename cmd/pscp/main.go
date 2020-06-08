@@ -20,7 +20,7 @@ func main() {
 	var passwords []string
 
 	// replace hostname while keep other options in place
-	for _, arg := range args {
+	for _, arg := range args[1:] {
 		if strings.Index(arg, ":") > 0 {
 			if mode == "" {
 				mode = "pull"

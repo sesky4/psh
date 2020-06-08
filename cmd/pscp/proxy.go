@@ -55,6 +55,9 @@ func proxySCPPull(rUser, rHost, rPath string, rPort int, lPath string, passwords
 		buf := make([]byte, 30*1024)
 		for {
 			nr, err := ptmx.Read(buf)
+			if err == io.EOF {
+				break
+			}
 			poe(err)
 			os.Stdout.Write(buf[:nr])
 
@@ -111,6 +114,9 @@ func proxySCPPush(rUser, rHost, rPath string, rPort int, lPath string, passwords
 		buf := make([]byte, 30*1024)
 		for {
 			nr, err := ptmx.Read(buf)
+			if err == io.EOF {
+				break
+			}
 			poe(err)
 			os.Stdout.Write(buf[:nr])
 
