@@ -1,4 +1,4 @@
-package conf
+package psh
 
 import (
 	"fmt"

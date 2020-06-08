@@ -4,11 +4,11 @@ import (
 	"flag"
 	"github.com/posener/complete"
 	"os"
-	"psh/conf"
+	main2 "psh"
 )
 
 // bash/zsh auto-completion
-func ifAutoComplete(c conf.Conf) {
+func ifAutoComplete(c main2.Conf) {
 	cmd := complete.Command{
 		Flags: complete.Flags{},
 	}
