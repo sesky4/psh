@@ -16,7 +16,7 @@
 
 4.(first time) `psh -complete && pscp -complete` to install bash/zsh auto_completion
 
-5.Use it!
+5.Use it !
 ```
 psh server1
 
