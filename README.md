@@ -8,7 +8,7 @@
 
 ## How to use
 
-1.write your own pconfig file in ~/.ssh/pconfig(example ./pconfig in repo)
+1.write your own pconfig file in ~/.ssh/pconfig, example: ./pconfig.example
 
 2.make psh && make install_psh
 
