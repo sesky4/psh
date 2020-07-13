@@ -11,7 +11,6 @@ import (
 	"os/signal"
 	"regexp"
 	"strconv"
-	"sync"
 	"syscall"
 )
 
@@ -52,7 +51,6 @@ func proxySSH(host string, port int, user string, passwords []string) {
 	defer terminal.Restore(int(os.Stdin.Fd()), oldState)
 
 	go io.Copy(ptmx, os.Stdin)
-	go io.Copy(os.Stdout, ptmx)
 	// login
 	{
 		buf := make([]byte, 30*1024)
@@ -76,5 +74,5 @@ func proxySSH(host string, port int, user string, passwords []string) {
 	}
 
 loginSuccess:
-	(&sync.WaitGroup{}).Wait()
+	io.Copy(os.Stdout, ptmx)
 }
