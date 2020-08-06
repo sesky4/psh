@@ -70,17 +70,21 @@ func ifAutoComplete(c psh.Conf) {
 	for k, _ := range c.Named {
 		cmd.Flags[k+":"] = complete.PredictAnything
 	}
-	wd, err := os.Getwd()
-	if err != nil {
-		panic(err)
-	}
-	fs, err := ioutil.ReadDir(wd)
-	if err != nil {
-		panic(err)
-	}
-	for _, f := range fs {
-		cmd.Flags[f.Name()] = complete.PredictAnything
-	}
+
+	func() {
+		wd, err := os.Getwd()
+		if err != nil {
+			return
+		}
+		fs, err := ioutil.ReadDir(wd)
+		if err != nil {
+			return
+		}
+		for _, f := range fs {
+			cmd.Flags[f.Name()] = complete.PredictAnything
+		}
+	}()
+
 	cmp := complete.New(
 		"pscp",
 		cmd,
