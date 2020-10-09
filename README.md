@@ -1,4 +1,4 @@
-# PSH - login ssh with password autofilled
+# PSH - SSH password autofilled
 
 ## feature
  - [x] auto-fill password
