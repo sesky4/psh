@@ -30,8 +30,10 @@ func ifAutoComplete(c main2.Conf) {
 	cmp.CLI.UninstallName = "uncomplete"
 	cmp.AddFlags(nil)
 
-	flag.Parse()
-	if cmp.Complete() {
-		os.Exit(0)
+	if os.Args[1] == "complete" || os.Args[1] == "uncomplete" {
+		flag.Parse()
+		if cmp.Complete() {
+			os.Exit(0)
+		}
 	}
 }

@@ -1,13 +1,13 @@
 psh:
-	go build -o build/psh cmd/psh/*
+	go build -o build/psh psh/cmd/psh
 
 pscp:
-	go build -o build/pscp cmd/pscp/*
+	go build -o build/pscp psh/cmd/pscp
 
-install_psh:
+psh_install: psh
 	mv build/psh /usr/local/bin/psh
 
-install_pscp:
+pscp_install: pscp
 	mv build/pscp /usr/local/bin/pscp
 
 clean:

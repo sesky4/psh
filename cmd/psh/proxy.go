@@ -21,9 +21,10 @@ var (
 	loginRE    = regexp.MustCompile(`.*Welcome to .*`)
 )
 
-func proxySSH(host string, port int, user string, passwords []string) {
-	args := []string{"-p", strconv.Itoa(port), fmt.Sprintf("%s@%s", user, host)}
-	cmd := exec.Command("ssh", args...)
+func proxySSH(host string, port int, user string, passwords, args []string) {
+	cmdArgs := []string{"-p", strconv.Itoa(port), fmt.Sprintf("%s@%s", user, host)}
+	cmdArgs = append(cmdArgs, args...)
+	cmd := exec.Command("ssh", cmdArgs...)
 
 	// Start the command with a pty.
 	ptmx, err := pty.Start(cmd)
