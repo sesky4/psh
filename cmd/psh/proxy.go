@@ -18,7 +18,7 @@ var (
 	pwdRE      = regexp.MustCompile(`.*password:`)
 	certRE     = regexp.MustCompile(`The authenticity of host .* can't be established.*`)
 	wrongPwdRE = regexp.MustCompile(`Permission denied, please try again.`)
-	loginRE    = regexp.MustCompile(`.*Welcome to .*`)
+	loginRE    = regexp.MustCompile(`.*Last login.*`)
 )
 
 func proxySSH(host string, port int, user string, passwords, args []string) {
@@ -58,9 +58,11 @@ func proxySSH(host string, port int, user string, passwords, args []string) {
 		for {
 			nr, err := ptmx.Read(buf)
 			poe(err)
-			os.Stdout.Write(buf[:nr])
 
-			rs := string(buf[:nr])
+			bs := buf[:nr]
+			os.Stdout.Write(bs)
+
+			rs := string(bs)
 			switch {
 			case pwdRE.MatchString(rs):
 				ptmx.Write([]byte(passwords[0] + "\n"))

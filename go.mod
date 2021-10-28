@@ -3,7 +3,7 @@ module psh
 go 1.13
 
 require (
-	github.com/creack/pty v1.1.7
+	github.com/creack/pty v1.1.17
 	github.com/gobwas/glob v0.2.3
 	github.com/posener/complete v1.2.3
 	github.com/stretchr/testify v1.6.0 // indirect

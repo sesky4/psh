@@ -5,10 +5,15 @@ pscp:
 	go build -o build/pscp psh/cmd/pscp
 
 psh_install: psh
-	mv build/psh /usr/local/bin/psh
+	go install ./cmd/psh
 
 pscp_install: pscp
-	mv build/pscp /usr/local/bin/pscp
+	go install ./cmd/pscp
+
+install: psh_install pscp_install
+
+complete:
+	psh -complete && pscp -complete
 
 clean:
 	rm -rf build
