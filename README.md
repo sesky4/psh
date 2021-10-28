@@ -1,4 +1,4 @@
-# PSH - login ssh with password autofilled
+# PSH - Automate SSH login
 
 ## feature
  - [x] auto-fill password
@@ -20,6 +20,6 @@
 ```
 psh server1
 
-pscp server1:/root/my_file.py .
-pscp ./my_file.py server1:/root/
+pscp server1:/root/file_to_download.py .
+pscp ./file_to_upload.py server1:/root/
 ```
