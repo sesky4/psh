@@ -30,8 +30,13 @@ func ifAutoComplete(c main2.Conf) {
 	cmp.CLI.UninstallName = "uncomplete"
 	cmp.AddFlags(nil)
 
-	flag.Parse()
-	if cmp.Complete() {
-		os.Exit(0)
+	for _, arg := range os.Args {
+		if arg == "-complete" || arg == "-uncomplete" {
+			// flag.Parse和外面的ssh参数解析冲突，所以这里判断有complete才flag.Parse
+			flag.Parse()
+			if cmp.Complete() {
+				os.Exit(0)
+			}
+		}
 	}
 }

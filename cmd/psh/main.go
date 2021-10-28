@@ -24,25 +24,28 @@ func main() {
 	// 2. "-X xxx" 的形式
 	for i := 1; i < len(os.Args); i++ {
 		arg := os.Args[i]
-		if arg[0] == '-' {
-			if len(arg) < 2 {
-				fmt.Fprintf(os.Stderr, "unknown arg "+arg)
-			} else if len(arg) == 2 {
-				// -X xxx的形式
-				args = append(args, arg, os.Args[i+1])
-				i++
-			} else if len(arg) > 2 {
-				// -Xxxx的形式
-				args = append(args, arg)
-			}
-		} else {
+		if arg[0] != '-' {
 			host = arg
+			continue
+		}
+
+		switch {
+		case len(arg) < 2:
+			fmt.Fprintf(os.Stderr, "unknown arg "+arg)
+			os.Exit(1)
+		case len(arg) == 2:
+			// -X yyy的形式
+			args = append(args, arg, os.Args[i+1])
+			i++
+		case len(arg) > 2:
+			// -xxx的形式
+			args = append(args, arg)
 		}
 	}
 
 	item, ok := c.Match(host)
 	if !ok {
-		log.Fatalf("%s not found in ~/.ssh/pconfig", host)
+		log.Fatalf("\"%s\" not found in ~/.ssh/pconfig", host)
 	}
 	proxySSH(item.Host, item.Port, item.Username, item.Passwords, args)
 }

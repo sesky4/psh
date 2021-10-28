@@ -13,7 +13,7 @@ pscp_install: pscp
 install: psh_install pscp_install
 
 complete:
-	psh -complete && pscp -complete
+	psh -complete -y ; pscp -complete -y
 
 clean:
 	rm -rf build
