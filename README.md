@@ -3,7 +3,7 @@
 ## feature
  - [x] auto-fill password
  - [x] glob connection name match
- - [ ] other ssh options
+ - [x] other ssh options
  - [x] scp support
 
 ## How to use
